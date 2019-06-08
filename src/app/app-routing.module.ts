@@ -32,7 +32,8 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: './pages/tutorial/tutorial.module#TutorialModule',
     canLoad: [CheckTutorial]
-  }
+  },  { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule' }
+
 ];
 
 @NgModule({
