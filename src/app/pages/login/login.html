@@ -33,7 +33,7 @@
       </ion-text>
     </ion-list>
 
-    <ion-row>
+    <ion-row class="button-row">
       <ion-col>
         <ion-button (click)="onLogin(loginForm)" type="submit" class="big-button" expand="block" size="large">
           Zaloguj się
@@ -42,5 +42,18 @@
       </ion-col>
     </ion-row>
   </form>
+
+  <ion-row style="margin-bottom: 10px;">
+    <ion-col>
+      <div class="forgot-password">Zapomniałeś hasła?</div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col style="text-align: center;">
+      <img src="assets/img/f.png" alt="Facebook logo" style="margin: 0 5px;">
+      <img src="assets/img/g.png" alt="Google logo" style="margin: 0 5px;">
+    </ion-col>
+  </ion-row>
 
 </ion-content>
