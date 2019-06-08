@@ -1,12 +1,14 @@
 <ion-content>
+
+  <h2 class="login-header">Zaloguj się</h2>
   <div class="login-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic logo">
+    <img src="assets/img/AVATAR.png" alt="Ionic logo">
   </div>
 
-  <form #loginForm="ngForm" novalidate>
+  <form #loginForm="ngForm" novalidate class="form">
     <ion-list>
-      <ion-item>
-        <ion-label position="stacked" color="primary">Username</ion-label>
+      <ion-item class="rounded">
+        <ion-label position="floating" color="primary">Nazwa użytkownika</ion-label>
         <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
           required>
         </ion-input>
@@ -18,8 +20,8 @@
         </p>
       </ion-text>
 
-      <ion-item>
-        <ion-label position="stacked" color="primary">Password</ion-label>
+      <ion-item class="rounded">
+        <ion-label position="floating" color="primary">Hasło</ion-label>
         <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
         </ion-input>
       </ion-item>
@@ -33,7 +35,10 @@
 
     <ion-row>
       <ion-col>
-        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
+        <ion-button (click)="onLogin(loginForm)" type="submit" class="big-button" expand="block" size="large">
+          Zaloguj się
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </form>

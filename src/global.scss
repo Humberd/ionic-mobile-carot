@@ -19,3 +19,10 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.big-button {
+  text-transform: none;
+  button {
+    background: linear-gradient(90deg, #2A99FE 13.89%, #828FFB 50.08%) !important;
+  }
+}
