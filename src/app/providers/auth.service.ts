@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 export interface UserInfo {
   username: string;
@@ -11,11 +12,17 @@ export interface UserInfo {
 export class AuthService {
   private userInfo?: UserInfo;
 
-  constructor() {
+  constructor(private storage: Storage) {
+    this.storage.get('userInfo').then(storageInfo => {
+      if (storageInfo) {
+        this.authorize(JSON.parse(storageInfo))
+      }
+    })
   }
 
   authorize(userInfo: UserInfo) {
     this.userInfo = userInfo;
+    this.storage.set('userInfo', JSON.stringify(userInfo))
   }
 
   isAuthorized(): boolean {
@@ -23,6 +30,15 @@ export class AuthService {
   }
 
   getBaseAuthToken(): string {
-    return btoa(`${this.userInfo.username}:${this.userInfo.password}`)
+    return btoa(`${this.userInfo.username}:${this.userInfo.password}`);
+  }
+
+  logout(): void {
+    this.userInfo = undefined;
+    this.storage.remove('userInfo')
+  }
+
+  getUserInfo(): UserInfo {
+    return this.userInfo;
   }
 }

@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AlertController } from '@ionic/angular';
 
 import { UserData } from '../../providers/user-data';
+import { AuthService } from '../../providers/auth.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class AccountPage implements AfterViewInit {
   constructor(
     public alertCtrl: AlertController,
     public router: Router,
-    public userData: UserData
+    public userData: UserData,
+    public authService: AuthService
   ) { }
 
   ngAfterViewInit() {

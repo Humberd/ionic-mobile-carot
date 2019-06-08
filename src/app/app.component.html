@@ -24,7 +24,7 @@
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-list *ngIf="loggedIn">
+      <!--  <ion-list *ngIf="loggedIn">
           <ion-list-header>
             Account
           </ion-list-header>
@@ -56,9 +56,20 @@
             </ion-item>
           </ion-menu-toggle>
 
+        </ion-list>-->
+
+        <ion-list>
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="logout()">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-list>
 
-        <ion-list *ngIf="!loggedIn">
+     <!--   <ion-list *ngIf="!loggedIn">
           <ion-list-header>
             Account
           </ion-list-header>
@@ -89,9 +100,9 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list>
+        </ion-list>-->
 
-        <ion-list>
+        <!--<ion-list>
           <ion-list-header>
             Tutorial
           </ion-list-header>
@@ -101,7 +112,7 @@
               <ion-label>Show Tutorial</ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list>
+        </ion-list>-->
       </ion-content>
     </ion-menu>
 
