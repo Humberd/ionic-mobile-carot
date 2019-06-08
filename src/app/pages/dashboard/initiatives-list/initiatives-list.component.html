@@ -1,4 +1,4 @@
-<ion-card *ngFor="let initiative of initiatives">
+<ion-card *ngFor="let initiative of initiatives; trackBy: trackBy">
   <ion-card-header style="display: flex; align-items: center;">
     <img src="assets/img/Group 8.png" style="width: 70px;height: 70px;"/>
     <div style="margin-left: 10px;">
@@ -9,7 +9,7 @@
         Lokalny bohater
       </div>
     </div>
-    <div class="like-count">
+    <div class="like-count" (click)="toggleLike(initiative)">
       <img [src]="isLiked(initiative) ? 'assets/img/hearth-full.png' : 'assets/img/hearth.png'">
       <div class="count"
            [class.is-liked]="isLiked(initiative)"

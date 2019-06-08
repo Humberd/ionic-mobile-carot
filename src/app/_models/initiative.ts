@@ -8,7 +8,7 @@ export interface Initiative {
   votes: number;
   author: Author;
   is_starred: boolean;
-  user_vote: boolean;
+  user_vote: number;
 }
 
 export interface Author {

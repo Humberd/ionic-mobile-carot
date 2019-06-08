@@ -13,4 +13,17 @@ export class AppHttpService {
   getInitiatives(): Observable<Initiative[]> {
     return this.http.get<Initiative[]>('/v1/initiatives')
   }
+
+  upvote(initiativeId: string): Observable<Initiative> {
+    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/upvote`, null)
+  }
+
+  downvote(initiativeId: string): Observable<Initiative> {
+    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/downvote`, null)
+  }
+
+  removevote(initiativeId: string): Observable<Initiative> {
+    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/removevote`, null)
+  }
+
 }

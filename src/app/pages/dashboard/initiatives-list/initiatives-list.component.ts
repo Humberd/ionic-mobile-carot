@@ -37,7 +37,25 @@ export class InitiativesListComponent implements OnInit, OnDestroy {
   }
 
   isLiked(initiative: Initiative): boolean {
-    return initiative.user_vote
+    return initiative.user_vote === 1;
   }
 
+  toggleLike(initiative: Initiative) {
+    let obs;
+    if (this.isLiked(initiative)) {
+      obs = this.http.removevote(initiative.id)
+    } else {
+      obs = this.http.upvote(initiative.id)
+    }
+
+    obs
+      .pipe(
+        switchMap(it => this.http.getInitiatives())
+      )
+      .subscribe(it => this.initiatives = it)
+  }
+
+  trackBy(index: number, item: Initiative) {
+    return item.id
+  }
 }
