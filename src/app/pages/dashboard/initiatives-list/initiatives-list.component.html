@@ -20,13 +20,25 @@
   </ion-card-header>
 
   <ion-card-content>
+    <div class="title">{{initiative.title}}</div>
+    <div class="description">{{initiative.body}}</div>
+    <img src="assets/img/placeholder-image.png" alt="Image" class="image">
+    <div class="separator"></div>
 
+    <div class="links">
+      <a [routerLink]="'details' + initiative.id"
+         [ngPlural]="2">
+        <ng-template ngPluralCase="=0">0 komentarzy</ng-template>
+        <ng-template ngPluralCase="=1">1 komentarz</ng-template>
+        <ng-template ngPluralCase=">1">{{2}} komentarzy</ng-template>
+      </a>
+      <a [routerLink]="''"
+         [ngPlural]="2">
+        <ng-template ngPluralCase="=0">0 udostępnień</ng-template>
+        <ng-template ngPluralCase="=1">1 udostępnienie</ng-template>
+        <ng-template ngPluralCase=">1">{{2}} udostępnień</ng-template>
+      </a>
+    </div>
   </ion-card-content>
-
-  <ion-item>
-    <ion-icon name="pin" slot="start"></ion-icon>
-    <ion-label>ion-item in a card, icon left, button right</ion-label>
-    <ion-button fill="outline" slot="end">View</ion-button>
-  </ion-item>
 
 </ion-card>
