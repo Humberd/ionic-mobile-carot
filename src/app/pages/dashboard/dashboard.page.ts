@@ -13,7 +13,6 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
-    this.http.getInitiatives().subscribe(console.log)
   }
 
   search() {

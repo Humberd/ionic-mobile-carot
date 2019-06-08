@@ -10,7 +10,7 @@ export class AppHttpService {
 
   constructor(private http: HttpClient) { }
 
-  getInitiatives(): Observable<Initiative> {
-    return this.http.get<Initiative>('/v1/initiatives')
+  getInitiatives(): Observable<Initiative[]> {
+    return this.http.get<Initiative[]>('/v1/initiatives')
   }
 }
