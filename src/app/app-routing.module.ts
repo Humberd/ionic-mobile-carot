@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckTutorial } from './providers/check-tutorial.service';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    loadChildren: './pages/account/account.module#AccountModule'
+    loadChildren: './pages/account/account.module#AccountModule',
   },
   {
     path: 'support',
@@ -32,7 +33,12 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: './pages/tutorial/tutorial.module#TutorialModule',
     canLoad: [CheckTutorial]
-  },  { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule' }
+  },
+  {
+    path: 'dashboard',
+    loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule',
+    canLoad: [AuthGuard]
+  }
 
 ];
 
@@ -40,4 +46,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
