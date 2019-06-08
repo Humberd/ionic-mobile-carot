@@ -9,7 +9,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test --watch=false",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "serve-prod": "ionic serve --lab",
+    "build-android": "ionic cordova build android --prod"
   },
   "husky": {
     "hooks": {
@@ -92,7 +94,9 @@
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
       "cordova-plugin-statusbar": {},
       "cordova-plugin-ionic-keyboard": {}
     }
