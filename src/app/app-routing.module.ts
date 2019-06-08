@@ -12,6 +12,7 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: './pages/account/account.module#AccountModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'support',

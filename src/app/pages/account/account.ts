@@ -23,7 +23,6 @@ export class AccountPage implements AfterViewInit {
   ) { }
 
   ngAfterViewInit() {
-    this.getUsername();
   }
 
   updatePicture() {
