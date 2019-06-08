@@ -16,6 +16,7 @@ import { AuthService } from '../../providers/auth.service';
 export class LoginPage {
   login: UserOptions = {username: '', password: ''};
   submitted = false;
+  segment: 'login' | 'register' = 'login';
 
   constructor(
     public userData: UserData,
