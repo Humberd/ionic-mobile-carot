@@ -23,7 +23,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
       return next.handle(newUrlReq);
     }
     const authReq = newUrlReq.clone({
-      headers: newUrlReq.headers.set('Authorization', `Basic: ${this.authService.getBaseAuthToken()}`)
+      headers: newUrlReq.headers.set('Authorization', `Basic ${this.authService.getBaseAuthToken()}`)
     });
     return next.handle(authReq);
   }
