@@ -17,7 +17,7 @@ export class InitiativesListComponent implements OnInit, OnDestroy {
 
   @Input()
   set groupId(value: string) {
-    this.groupId$.next(value)
+    this.groupId$.next(value);
   }
 
   @Input()
@@ -25,7 +25,8 @@ export class InitiativesListComponent implements OnInit, OnDestroy {
     this.searchQuery$.next(value);
   }
 
-  constructor(private http: AppHttpService) { }
+  constructor(private http: AppHttpService) {
+  }
 
   ngOnInit() {
     this.groupId$
@@ -42,9 +43,9 @@ export class InitiativesListComponent implements OnInit, OnDestroy {
                 tap(groupId => console.log({groupId})),
                 map(it => it.filter(init => {
                   if (!searchQuery) {
-                    return init
+                    return init;
                   }
-                  return init.title.toLowerCase().includes(searchQuery) ||  init.body.toLowerCase().includes(searchQuery)
+                  return init.title.toLowerCase().includes(searchQuery) || init.body.toLowerCase().includes(searchQuery);
                 }))
               )
             )
@@ -52,8 +53,13 @@ export class InitiativesListComponent implements OnInit, OnDestroy {
         )
       )
       .subscribe(initiatives => {
-        this.initiatives = initiatives
-      })
+        this.initiatives = initiatives;
+        initiatives.forEach(initiative => {
+          if (String(initiative.body).length > 120) {
+            initiative.truncateBody = true;
+          }
+        });
+      });
   }
 
   ngOnDestroy(): void {
@@ -67,19 +73,26 @@ export class InitiativesListComponent implements OnInit, OnDestroy {
   toggleLike(initiative: Initiative) {
     let obs;
     if (this.isLiked(initiative)) {
-      obs = this.http.removevote(initiative.id)
+      obs = this.http.removevote(initiative.id);
     } else {
-      obs = this.http.upvote(initiative.id)
+      obs = this.http.upvote(initiative.id);
     }
 
     obs
       .pipe(
         switchMap(it => this.http.getInitiatives())
       )
-      .subscribe(it => this.initiatives = it)
+      .subscribe(it => {
+        this.initiatives = it;
+        this.initiatives.forEach(initiative => {
+          if (String(initiative.body).length > 120) {
+            initiative.truncateBody = true;
+          }
+        });
+      });
   }
 
   trackBy(index: number, item: Initiative) {
-    return item.id
+    return item.id;
   }
 }

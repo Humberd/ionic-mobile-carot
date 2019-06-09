@@ -38,6 +38,9 @@ export class InitiativeDetailsPage implements OnInit, OnDestroy {
       )
       .subscribe(initiative => {
         this.initiative = initiative;
+        if (String(initiative.body).length > 120) {
+          initiative.truncateBody = true;
+        }
       });
 
     this.paramChange
@@ -66,7 +69,12 @@ export class InitiativeDetailsPage implements OnInit, OnDestroy {
     }
 
     obs
-      .subscribe(it => this.initiative = it);
+      .subscribe(it => {
+        this.initiative = it;
+        if (String(this.initiative.body).length > 120) {
+          this.initiative.truncateBody = true;
+        }
+      });
   }
 
   toggleCommentLink(comment: InitiativeComment) {

@@ -11,6 +11,7 @@ export interface Initiative {
   author: Author;
   is_starred: boolean;
   user_vote: number;
+  truncateBody?: boolean;
 }
 
 export interface Author {
