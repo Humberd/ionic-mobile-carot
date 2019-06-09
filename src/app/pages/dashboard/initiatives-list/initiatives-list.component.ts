@@ -13,7 +13,7 @@ export class InitiativesListComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject();
   private readonly groupId$ = new BehaviorSubject<string>(null);
   private readonly searchQuery$ = new BehaviorSubject<string>(null);
-  private initiatives: Initiative[];
+  initiatives: Initiative[];
 
   @Input()
   set groupId(value: string) {

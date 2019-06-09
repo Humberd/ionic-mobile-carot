@@ -11,7 +11,7 @@
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "serve-prod": "ionic serve --lab",
-    "build-android": "ionic cordova build android --prod"
+    "build-android": "ionic cordova build android --prod --release"
   },
   "husky": {
     "hooks": {

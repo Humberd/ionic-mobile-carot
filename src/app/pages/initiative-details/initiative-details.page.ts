@@ -14,7 +14,7 @@ import { InitiativeComment } from '../../_models/comment';
 export class InitiativeDetailsPage implements OnInit, OnDestroy {
   alreadyFounded = false;
   private readonly destroy$ = new Subject();
-  private initiative: Initiative;
+  initiative: Initiative;
   private paramChange: Observable<string>;
   private comments: InitiativeComment[];
 
