@@ -12,6 +12,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!req.url.startsWith('/v1')) {
+      console.log('doesnt start with /v1');
       return next.handle(req);
     }
 
@@ -20,6 +21,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     });
 
     if (!this.authService.isAuthorized()) {
+      console.log('not-authorized');
       return next.handle(newUrlReq);
     }
     const authReq = newUrlReq.clone({

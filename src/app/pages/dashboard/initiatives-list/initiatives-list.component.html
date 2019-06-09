@@ -5,7 +5,10 @@
       <div class="username">
         {{initiative.author.first_name}} {{initiative.author.last_name}}
       </div>
-      <div class="bohater-badge" [ngStyle]="{visibility: initiative.author.badge}">
+      <div class="bohater-badge" [ngStyle]="{visibility: initiative.author.badge}"
+           [class.lokalny-bohater]="initiative.author.badge === 'Lokalny Bohater'"
+           [class.urzednik]="initiative.author.badge === 'Urzędnik'"
+      >
         {{initiative.author.badge || 'x'}}
       </div>
     </div>

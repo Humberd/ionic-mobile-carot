@@ -109,12 +109,21 @@
     font-size: 15px;
     line-height: 18px;
 
-    color: #3B3350;
+    color: #848CBA;
 
-    background: rgba(130, 143, 251, 0.18);
+    background: rgba(132, 140, 186, 0.18);
     border-radius: 3px;
 
     padding: 5px 9px;
+
+    &.lokalny-bohater {
+      color: #FFA000;
+      background: rgba(255, 193, 7, 0.14);
+    }
+    &.urzednik {
+      color: #FB829F;
+      background: rgba(249, 130, 251, 0.18);
+    }
   }
 
   .username {
@@ -127,9 +136,23 @@
 }
 
 .comment-card {
-  display: flex;
-  align-items: center;
-
   padding: 22px 0;
   border-bottom: 1px solid #DADDEA;
+
+  .header {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 15px;
+  }
+
+  .text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: #848CBA;
+
+  }
 }

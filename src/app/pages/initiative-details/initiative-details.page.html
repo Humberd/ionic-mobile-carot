@@ -66,22 +66,31 @@
         </div>
 
         <div class="comment-card" *ngFor="let comment of comments">
-          <img src="assets/img/Group 8.png" style="width: 70px;height: 70px;"/>
-          <div style="margin-left: 10px;">
-            <div class="username">
-              {{comment.user.first_name}} {{comment.user.last_name}}
+          <div class="header">
+            <img src="assets/img/Group 8.png" style="width: 70px;height: 70px;"/>
+            <div style="margin-left: 10px;">
+              <div class="username">
+                {{comment.user.first_name}} {{comment.user.last_name}}
+              </div>
+              <div class="bohater-badge" [ngStyle]="{visibility: comment.user.badge}"
+                   [class.lokalny-bohater]="comment.user.badge === 'Lokalny Bohater'"
+                   [class.urzednik]="comment.user.badge === 'Urzędnik'"
+              >
+                {{comment.user.badge || 'x'}}
+              </div>
             </div>
-            <div class="bohater-badge" [ngStyle]="{visibility: comment.user.badge}">
-              {{comment.user.badge || 'x'}}
+            <div class="like-count" (click)="toggleCommentLink(comment)">
+              <img [src]="isLiked(comment.user_vote) ? 'assets/img/hearth-full.png' : 'assets/img/hearth.png'">
+              <div class="count"
+                   [class.is-liked]="isLiked(comment.user_vote)"
+              >
+                {{comment.votes}}
+              </div>
             </div>
           </div>
-          <div class="like-count" (click)="toggleCommentLink(comment)">
-            <img [src]="isLiked(comment.user_vote) ? 'assets/img/hearth-full.png' : 'assets/img/hearth.png'">
-            <div class="count"
-                 [class.is-liked]="isLiked(comment.user_vote)"
-            >
-              {{comment.votes}}
-            </div>
+
+          <div class="text">
+            {{comment.body}}
           </div>
         </div>
 
