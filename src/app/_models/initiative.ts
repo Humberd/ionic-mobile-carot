@@ -3,6 +3,7 @@ export interface Initiative {
   title: string;
   imageUrl: string;
   body: string;
+  cover: string;
   date_created: Date;
   date_edited: Date;
   is_edited: boolean;

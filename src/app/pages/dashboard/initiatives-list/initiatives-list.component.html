@@ -28,7 +28,7 @@
       {{initiative.body | truncatedText:initiative.truncateBody}}
       <span style="font-weight: bold;color: #828FFB;" *ngIf="initiative.truncateBody" (click)="initiative.truncateBody = !initiative.truncateBody">Zobacz więcej</span>
     </div>
-    <img src="assets/img/placeholder-image.png" alt="Image" class="image">
+    <img [src]="initiative.cover" alt="Image" class="image" [routerLink]="['/initiative-details',initiative.id]" *ngIf="initiative.cover">
     <div class="separator"></div>
 
     <div class="links">

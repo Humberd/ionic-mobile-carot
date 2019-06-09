@@ -32,7 +32,7 @@
       <span style="font-weight: bold;color: #828FFB;" *ngIf="initiative.truncateBody" (click)="initiative.truncateBody = !initiative.truncateBody">Zobacz więcej</span>
     </div>
 
-    <img src="assets/img/placeholder-image.png" alt="Image" class="image">
+    <img [src]="initiative.cover" alt="Image" class="image" *ngIf="initiative.cover">
 
     <button class="request-founding" (click)="requestFounding()"
             [disabled]="alreadyFounded"
