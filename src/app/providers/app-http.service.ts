@@ -9,38 +9,39 @@ import { InitiativeComment } from '../_models/comment';
 })
 export class AppHttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getInitiatives(): Observable<Initiative[]> {
-    return this.http.get<Initiative[]>('/v1/initiatives')
+    return this.http.get<Initiative[]>('/v1/initiatives');
   }
 
   getInitiative(id: string): Observable<Initiative> {
-    return this.http.get<Initiative>(`/v1/initiatives/${id}`)
+    return this.http.get<Initiative>(`/v1/initiatives/${id}`);
   }
 
   upvote(initiativeId: string): Observable<Initiative> {
-    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/upvote`, null)
+    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/upvote`, null);
   }
 
   downvote(initiativeId: string): Observable<Initiative> {
-    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/downvote`, null)
+    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/downvote`, null);
   }
 
   removevote(initiativeId: string): Observable<Initiative> {
-    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/removevote`, null)
+    return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/removevote`, null);
   }
 
   getComments(initiativeId: string): Observable<InitiativeComment[]> {
-    return this.http.get<InitiativeComment[]>(`/v1/comments?initiative_id=${initiativeId}`)
+    return this.http.get<InitiativeComment[]>(`/v1/comments?initiative_id=${initiativeId}`);
   }
 
   upvoteComment(initiativeId: number): Observable<Initiative> {
-    return this.http.post<Initiative>(`/v1/comments/${initiativeId}/upvote`, null)
+    return this.http.post<Initiative>(`/v1/comments/${initiativeId}/upvote`, null);
   }
 
   removevoteComment(initiativeId: number): Observable<Initiative> {
-    return this.http.post<Initiative>(`/v1/comments/${initiativeId}/removevote`, null)
+    return this.http.post<Initiative>(`/v1/comments/${initiativeId}/removevote`, null);
   }
 
 }

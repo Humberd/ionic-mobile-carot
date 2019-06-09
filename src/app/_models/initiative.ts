@@ -1,6 +1,7 @@
 export interface Initiative {
   id: string;
   title: string;
+  imageUrl: string;
   body: string;
   date_created: Date;
   date_edited: Date;
