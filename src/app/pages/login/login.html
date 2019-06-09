@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar color="light">
     <ion-segment [(ngModel)]="segment">
-      <ion-segment-button value="login">
+      <ion-segment-button value="login" style="text-transform: none;">
         Zaloguj
       </ion-segment-button>
-      <ion-segment-button value="register">
+      <ion-segment-button value="register" style="text-transform: none;">
         Zarejestruj
       </ion-segment-button>
     </ion-segment>
@@ -49,10 +49,10 @@
 
     <ion-row class="button-row">
       <ion-col>
-        <ion-button (click)="onLogin(loginForm)" type="submit" class="big-button" expand="block" size="large">
+        <div (click)="onLogin(loginForm)" class="login-button">
           Zaloguj się
-          <ion-icon name="arrow-dropright"></ion-icon>
-        </ion-button>
+          <img src="assets/img/chevron-right.png" alt="Image" class="chevron">
+        </div>
       </ion-col>
     </ion-row>
   </form>

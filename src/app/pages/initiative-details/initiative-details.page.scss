@@ -89,6 +89,10 @@
     height: 64px;
 
     margin-bottom: 17px;
+
+    &:disabled {
+      background: rgba(130, 143, 251, 0.44);
+    }
   }
 
   .separator {
