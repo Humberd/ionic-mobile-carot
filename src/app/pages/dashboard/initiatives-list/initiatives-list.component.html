@@ -26,11 +26,11 @@
     <div class="separator"></div>
 
     <div class="links">
-      <a [routerLink]="'details' + initiative.id">
-        {{2 === 1 ? '1 komentarz' : 2 + ' komentarzy'}}
+      <a [routerLink]="['/initiative-details',initiative.id]">
+        {{initiative.comments_count === 1 ? '1 komentarz' : initiative.comments_count + ' komentarzy'}}
       </a>
       <a [routerLink]="''">
-        {{2 === 1 ? '1 udostępnienie' : 2 + ' udostępnień'}}
+        {{initiative.shares_count === 1 ? '1 udostępnienie' : initiative.shares_count + ' udostępnień'}}
       </a>
     </div>
   </ion-card-content>

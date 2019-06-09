@@ -6,9 +6,11 @@ export interface Initiative {
   date_edited: Date;
   is_edited: boolean;
   votes: number;
+  shares_count: number;
+  comments_count: number;
   author: Author;
   is_starred: boolean;
-  user_vote: null;
+  user_vote: number;
 }
 
 export interface Author {

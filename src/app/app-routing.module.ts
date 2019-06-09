@@ -39,7 +39,12 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule',
     canLoad: [AuthGuard]
+  },
+  {
+    path: 'initiative-details/:id',
+    loadChildren: './pages/initiative-details/initiative-details.module#InitiativeDetailsPageModule'
   }
+
 
 ];
 

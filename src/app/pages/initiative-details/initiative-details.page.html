@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>Inicjatywy</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="initiative" >
+
+  <div class="wrapper">
+    <div class="header">
+      <div class="title">{{initiative.title}}</div>
+      <div class="like-count" (click)="toggleLike(initiative)">
+        <img [src]="isLiked(initiative) ? 'assets/img/hearth-full.png' : 'assets/img/hearth.png'">
+        <div class="count"
+             [class.is-liked]="isLiked(initiative)"
+        >
+          {{initiative.votes}}
+        </div>
+      </div>
+    </div>
+
+    <div class="description">
+      {{initiative.body}}
+    </div>
+
+    <img src="assets/img/placeholder-image.png" alt="Image" class="image">
+
+    <button class="request-founding">
+      Ubiegaj o fundusz
+      <img src="assets/img/chevron-right.png" alt="Image" class="chevron">
+    </button>
+
+    <div class="separator"></div>
+
+  </div>
+
+</ion-content>

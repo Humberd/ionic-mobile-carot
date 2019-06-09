@@ -14,6 +14,10 @@ export class AppHttpService {
     return this.http.get<Initiative[]>('/v1/initiatives')
   }
 
+  getInitiative(id: string): Observable<Initiative> {
+    return this.http.get<Initiative>(`/v1/initiatives/${id}`)
+  }
+
   upvote(initiativeId: string): Observable<Initiative> {
     return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/upvote`, null)
   }
