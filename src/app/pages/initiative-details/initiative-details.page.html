@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="initiative" >
+<ion-content *ngIf="initiative">
 
   <div class="wrapper">
     <div class="header">
@@ -23,13 +23,19 @@
       </div>
     </div>
 
+    <div class="founded-badge" *ngIf="alreadyFounded">
+      Zgłoszona do urzędu miasta
+    </div>
+
     <div class="description">
       {{initiative.body}}
     </div>
 
     <img src="assets/img/placeholder-image.png" alt="Image" class="image">
 
-    <button class="request-founding">
+    <button class="request-founding" (click)="requestFounding()"
+            [disabled]="alreadyFounded"
+    >
       Ubiegaj o fundusz
       <img src="assets/img/chevron-right.png" alt="Image" class="chevron">
     </button>
@@ -66,7 +72,7 @@
         </div>
 
         <div class="comment-card" *ngFor="let comment of comments">
-          <div class="header">
+          <div class="header2">
             <img src="assets/img/Group 8.png" style="width: 70px;height: 70px;"/>
             <div style="margin-left: 10px;">
               <div class="username">

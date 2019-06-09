@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { distinctUntilChanged, filter, map, switchMap, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { AppHttpService } from '../../providers/app-http.service';
@@ -12,13 +12,15 @@ import { InitiativeComment } from '../../_models/comment';
   styleUrls: ['./initiative-details.page.scss'],
 })
 export class InitiativeDetailsPage implements OnInit, OnDestroy {
+  alreadyFounded = false;
   private readonly destroy$ = new Subject();
   private initiative: Initiative;
   private paramChange: Observable<string>;
   private comments: InitiativeComment[];
 
   constructor(private activatedRoute: ActivatedRoute,
-              private http: AppHttpService) {
+              private http: AppHttpService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -78,8 +80,15 @@ export class InitiativeDetailsPage implements OnInit, OnDestroy {
     obs
       .subscribe((it: InitiativeComment) => {
         comment.votes = it.votes;
-        comment.user_vote = it.user_vote
+        comment.user_vote = it.user_vote;
       });
+  }
+
+  requestFounding() {
+    this.router.navigateByUrl('/found-success');
+    setTimeout(() => {
+      this.alreadyFounded = true;
+    }, 500);
   }
 
 }
