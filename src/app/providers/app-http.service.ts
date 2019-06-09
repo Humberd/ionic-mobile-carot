@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Initiative } from '../_models/initiative';
+import { InitiativeComment } from '../_models/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,16 @@ export class AppHttpService {
     return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/removevote`, null)
   }
 
-  getComments(initiativeId: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`/v1/comments?initiative_id=${initiativeId}`)
+  getComments(initiativeId: string): Observable<InitiativeComment[]> {
+    return this.http.get<InitiativeComment[]>(`/v1/comments?initiative_id=${initiativeId}`)
+  }
+
+  upvoteComment(initiativeId: number): Observable<Initiative> {
+    return this.http.post<Initiative>(`/v1/comments/${initiativeId}/upvote`, null)
+  }
+
+  removevoteComment(initiativeId: number): Observable<Initiative> {
+    return this.http.post<Initiative>(`/v1/comments/${initiativeId}/removevote`, null)
   }
 
 }

@@ -14,9 +14,9 @@
     <div class="header">
       <div class="title">{{initiative.title}}</div>
       <div class="like-count" (click)="toggleLike(initiative)">
-        <img [src]="isLiked(initiative) ? 'assets/img/hearth-full.png' : 'assets/img/hearth.png'">
+        <img [src]="isLiked(initiative.user_vote) ? 'assets/img/hearth-full.png' : 'assets/img/hearth.png'">
         <div class="count"
-             [class.is-liked]="isLiked(initiative)"
+             [class.is-liked]="isLiked(initiative.user_vote)"
         >
           {{initiative.votes}}
         </div>
@@ -55,7 +55,37 @@
       </div>
 
       <ng-template #commentsList>
-        COMMENTS
+
+        <div class="links">
+          <span class="link">
+            {{initiative.comments_count === 1 ? '1 komentarz' : initiative.comments_count + ' komentarzy'}}
+          </span>
+          <span class="link">
+            {{initiative.shares_count === 1 ? '1 udostępnienie' : initiative.shares_count + ' udostępnień'}}
+          </span>
+        </div>
+
+        <div class="comment-card" *ngFor="let comment of comments">
+          <img src="assets/img/Group 8.png" style="width: 70px;height: 70px;"/>
+          <div style="margin-left: 10px;">
+            <div class="username">
+              {{comment.user.first_name}} {{comment.user.last_name}}
+            </div>
+            <div class="bohater-badge" [ngStyle]="{visibility: comment.user.badge}">
+              {{comment.user.badge || 'x'}}
+            </div>
+          </div>
+          <div class="like-count" (click)="toggleCommentLink(comment)">
+            <img [src]="isLiked(comment.user_vote) ? 'assets/img/hearth-full.png' : 'assets/img/hearth.png'">
+            <div class="count"
+                 [class.is-liked]="isLiked(comment.user_vote)"
+            >
+              {{comment.votes}}
+            </div>
+          </div>
+        </div>
+
+
       </ng-template>
 
 

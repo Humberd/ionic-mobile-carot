@@ -13,26 +13,27 @@
     color: #3B3350;
   }
 
-  .like-count {
-    position: relative;
-    margin-left: auto;
+}
 
-    .count {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 29%;
+.like-count {
+  position: relative;
+  margin-left: auto;
 
-      font-style: normal;
-      font-weight: 600;
-      font-size: 15px;
-      line-height: 18px;
+  .count {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 22%;
 
-      color: #848CBA;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
 
-      &.is-liked {
-        color: #BC5DA5;
-      }
+    color: #848CBA;
+
+    &.is-liked {
+      color: #BC5DA5;
     }
   }
 }
@@ -103,4 +104,32 @@
     margin: 50px 0;
   }
 
+  .bohater-badge {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: #3B3350;
+
+    background: rgba(130, 143, 251, 0.18);
+    border-radius: 3px;
+
+    padding: 5px 9px;
+  }
+
+  .username {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #3B3350;
+    margin-bottom: 5px;
+  }
+}
+
+.comment-card {
+  display: flex;
+  align-items: center;
+
+  padding: 22px 0;
+  border-bottom: 1px solid #DADDEA;
 }

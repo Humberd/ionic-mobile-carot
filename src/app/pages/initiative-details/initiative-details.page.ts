@@ -4,6 +4,7 @@ import { distinctUntilChanged, filter, map, switchMap, takeUntil } from 'rxjs/op
 import { Observable, Subject } from 'rxjs';
 import { AppHttpService } from '../../providers/app-http.service';
 import { Initiative } from '../../_models/initiative';
+import { InitiativeComment } from '../../_models/comment';
 
 @Component({
   selector: 'initiative-details',
@@ -14,7 +15,7 @@ export class InitiativeDetailsPage implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject();
   private initiative: Initiative;
   private paramChange: Observable<string>;
-  private comments: Comment[];
+  private comments: InitiativeComment[];
 
   constructor(private activatedRoute: ActivatedRoute,
               private http: AppHttpService) {
@@ -50,13 +51,13 @@ export class InitiativeDetailsPage implements OnInit, OnDestroy {
     this.destroy$.next();
   }
 
-  isLiked(initiative: Initiative): boolean {
-    return initiative.user_vote === 1;
+  isLiked(user_vote: number): boolean {
+    return user_vote === 1;
   }
 
   toggleLike(initiative: Initiative) {
     let obs;
-    if (this.isLiked(initiative)) {
+    if (this.isLiked(initiative.user_vote)) {
       obs = this.http.removevote(initiative.id);
     } else {
       obs = this.http.upvote(initiative.id);
@@ -64,6 +65,21 @@ export class InitiativeDetailsPage implements OnInit, OnDestroy {
 
     obs
       .subscribe(it => this.initiative = it);
+  }
+
+  toggleCommentLink(comment: InitiativeComment) {
+    let obs;
+    if (this.isLiked(comment.user_vote)) {
+      obs = this.http.removevoteComment(comment.id);
+    } else {
+      obs = this.http.upvoteComment(comment.id);
+    }
+
+    obs
+      .subscribe((it: InitiativeComment) => {
+        comment.votes = it.votes;
+        comment.user_vote = it.user_vote
+      });
   }
 
 }
