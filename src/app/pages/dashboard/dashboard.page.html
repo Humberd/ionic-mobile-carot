@@ -7,21 +7,8 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="notifications"></ion-icon>
-      </ion-button>
-      <ion-button [routerLink]="'/account'">
-        <ion-icon slot="icon-only" name="contact"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-
-  <ion-toolbar color="light">
-    <ion-searchbar [(ngModel)]="queryText" (ionChange)="search()" placeholder="Szukaj..."></ion-searchbar>
-
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="add" color="secondary" size="large"></ion-icon>
+      <ion-button [routerLink]="'/account'" style="   height: 40px;">
+        <img src="assets/img/fake-user-avatar.png">
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -29,10 +16,20 @@
 </ion-header>
 
 <ion-content>
+  <div style="display: flex; align-items: center;">
+    <ion-searchbar [(ngModel)]="queryText" placeholder="Szukaj..."></ion-searchbar>
+
+    <ion-buttons style="margin-right: 8px;">
+      <ion-button>
+        <ion-icon slot="icon-only" name="add" color="secondary" size="large" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+
   <div class="buttons">
     <button (click)="selectGroup('zlota52')" [class.selected]="selectedGroupId === 'zlota52'">Zlota 52</button>
     <button (click)="selectGroup('ursynow')" [class.selected]="selectedGroupId === 'ursynow'">Ursynów</button>
   </div>
 
-  <initiatives-list [groupId]="selectedGroupId"></initiatives-list>
+  <initiatives-list [groupId]="selectedGroupId" [searchQuery]="queryText"></initiatives-list>
 </ion-content>
