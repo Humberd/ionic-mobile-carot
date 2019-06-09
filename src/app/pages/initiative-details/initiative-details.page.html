@@ -36,6 +36,31 @@
 
     <div class="separator"></div>
 
+
+    <div class="comments">
+
+      <div *ngIf="!comments || !comments?.length; else commentsList" class="empty-comments">
+
+        <img src="assets/img/empty-comments.png" alt="" style="margin-bottom: 10px;">
+
+        <div class="links">
+          <span class="link">
+            {{initiative.comments_count === 1 ? '1 komentarz' : initiative.comments_count + ' komentarzy'}}
+          </span>
+          <span class="link">
+            {{initiative.shares_count === 1 ? '1 udostępnienie' : initiative.shares_count + ' udostępnień'}}
+          </span>
+        </div>
+
+      </div>
+
+      <ng-template #commentsList>
+        COMMENTS
+      </ng-template>
+
+
+    </div>
+
   </div>
 
 </ion-content>

@@ -30,4 +30,8 @@ export class AppHttpService {
     return this.http.post<Initiative>(`/v1/initiatives/${initiativeId}/removevote`, null)
   }
 
+  getComments(initiativeId: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`/v1/comments?initiative_id=${initiativeId}`)
+  }
+
 }

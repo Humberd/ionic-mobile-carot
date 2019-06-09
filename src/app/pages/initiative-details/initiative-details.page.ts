@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { distinctUntilChanged, filter, map, switchMap, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { AppHttpService } from '../../providers/app-http.service';
 import { Initiative } from '../../_models/initiative';
 
@@ -13,23 +13,37 @@ import { Initiative } from '../../_models/initiative';
 export class InitiativeDetailsPage implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject();
   private initiative: Initiative;
+  private paramChange: Observable<string>;
+  private comments: Comment[];
 
   constructor(private activatedRoute: ActivatedRoute,
               private http: AppHttpService) {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap
+    this.paramChange = this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
         map(it => it.get('id')),
         filter(Boolean),
         distinctUntilChanged(),
+      );
+
+    this.paramChange
+      .pipe(
         switchMap(id => this.http.getInitiative(id))
       )
       .subscribe(initiative => {
         this.initiative = initiative;
-      })
+      });
+
+    this.paramChange
+      .pipe(
+        switchMap(id => this.http.getComments(id))
+      )
+      .subscribe(comments => {
+        this.comments = comments;
+      });
   }
 
   ngOnDestroy(): void {
@@ -43,13 +57,13 @@ export class InitiativeDetailsPage implements OnInit, OnDestroy {
   toggleLike(initiative: Initiative) {
     let obs;
     if (this.isLiked(initiative)) {
-      obs = this.http.removevote(initiative.id)
+      obs = this.http.removevote(initiative.id);
     } else {
-      obs = this.http.upvote(initiative.id)
+      obs = this.http.upvote(initiative.id);
     }
 
     obs
-      .subscribe(it => this.initiative = it)
+      .subscribe(it => this.initiative = it);
   }
 
 }

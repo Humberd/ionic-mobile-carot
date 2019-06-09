@@ -84,4 +84,23 @@
     height: 1px;
   }
 
+  .links {
+
+    .link {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 18px;
+      color: #848CBA;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+  }
+
+  .empty-comments {
+    text-align: center;
+    margin: 50px 0;
+  }
+
 }
