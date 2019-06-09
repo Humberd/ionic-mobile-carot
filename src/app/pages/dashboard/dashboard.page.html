@@ -20,14 +20,14 @@
     <ion-searchbar [(ngModel)]="queryText" placeholder="Szukaj..."></ion-searchbar>
 
     <ion-buttons style="margin-right: 8px;">
-      <ion-button fill="solid">
+      <ion-button fill="solid" routerLink="/new-initiative">
         <ion-icon slot="icon-only" name="add" color="secondary" size="large"></ion-icon>
       </ion-button>
     </ion-buttons>
   </div>
 
   <div class="buttons">
-    <button (click)="selectGroup('zlota52')" [class.selected]="selectedGroupId === 'zlota52'">Zlota 52</button>
+    <button (click)="selectGroup('złota52')" [class.selected]="selectedGroupId === 'złota52'">Złota 52</button>
     <button (click)="selectGroup('ursynow')" [class.selected]="selectedGroupId === 'ursynow'">Ursynów</button>
   </div>
 

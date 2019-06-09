@@ -21,7 +21,8 @@ const routes: Routes = [
     path: 'initiative-details/:id',
     loadChildren: './pages/initiative-details/initiative-details.module#InitiativeDetailsPageModule'
   },
-  { path: 'found-success', loadChildren: './pages/found-success/found-success.module#FoundSuccessPageModule' }
+  { path: 'found-success', loadChildren: './pages/found-success/found-success.module#FoundSuccessPageModule' },  { path: 'new-initiative', loadChildren: './pages/new-initiative/new-initiative.module#NewInitiativePageModule' }
+
 
 
 
