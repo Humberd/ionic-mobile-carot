@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Initiative } from '../_models/initiative';
 import { InitiativeComment } from '../_models/comment';
+import { NewInitiative } from '../_models/new-initiative';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,10 @@ export class AppHttpService {
 
   removevoteComment(initiativeId: number): Observable<Initiative> {
     return this.http.post<Initiative>(`/v1/comments/${initiativeId}/removevote`, null);
+  }
+
+  createInitiative(body: NewInitiative): Observable<any> {
+    return this.http.post<any>(`/v1/initiatives`, body)
   }
 
 }
