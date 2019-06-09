@@ -12,12 +12,6 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardPage,
-    children: [
-      {
-        path: ':groupId',
-        component: InitiativesListComponent
-      }
-    ]
   }
 ];
 

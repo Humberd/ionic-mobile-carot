@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AppHttpService } from '../../../providers/app-http.service';
-import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { distinctUntilChanged, filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { distinctUntilChanged, filter, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Initiative } from '../../../_models/initiative';
 
 @Component({
@@ -12,16 +11,20 @@ import { Initiative } from '../../../_models/initiative';
 })
 export class InitiativesListComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject();
+  private readonly groupId$ = new BehaviorSubject<string>(null);
   private initiatives: Initiative[];
 
-  constructor(private http: AppHttpService,
-              private activedRoute: ActivatedRoute) { }
+  @Input()
+  set groupId(value: string) {
+    this.groupId$.next(value)
+  }
+
+  constructor(private http: AppHttpService) { }
 
   ngOnInit() {
-    this.activedRoute.paramMap
+    this.groupId$
       .pipe(
         takeUntil(this.destroy$),
-        map(map => map.get('groupId')),
         filter(Boolean),
         distinctUntilChanged(),
         tap(groupId => console.log({groupId})),

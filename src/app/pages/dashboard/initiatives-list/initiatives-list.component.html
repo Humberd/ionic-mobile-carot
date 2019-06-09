@@ -3,10 +3,10 @@
     <img src="assets/img/Group 8.png" style="width: 70px;height: 70px;"/>
     <div style="margin-left: 10px;">
       <div class="username">
-        {{initiative.author.username}}
+        {{initiative.author.first_name}} {{initiative.author.last_name}}
       </div>
-      <div class="bohater-badge">
-        Lokalny bohater
+      <div class="bohater-badge" [ngStyle]="{visibility: initiative.author.badge}">
+        {{initiative.author.badge || 'x'}}
       </div>
     </div>
     <div class="like-count" (click)="toggleLike(initiative)">
@@ -26,17 +26,11 @@
     <div class="separator"></div>
 
     <div class="links">
-      <a [routerLink]="'details' + initiative.id"
-         [ngPlural]="2">
-        <ng-template ngPluralCase="=0">0 komentarzy</ng-template>
-        <ng-template ngPluralCase="=1">1 komentarz</ng-template>
-        <ng-template ngPluralCase=">1">{{2}} komentarzy</ng-template>
+      <a [routerLink]="'details' + initiative.id">
+        {{2 === 1 ? '1 komentarz' : 2 + ' komentarzy'}}
       </a>
-      <a [routerLink]="''"
-         [ngPlural]="2">
-        <ng-template ngPluralCase="=0">0 udostępnień</ng-template>
-        <ng-template ngPluralCase="=1">1 udostępnienie</ng-template>
-        <ng-template ngPluralCase=">1">{{2}} udostępnień</ng-template>
+      <a [routerLink]="''">
+        {{2 === 1 ? '1 udostępnienie' : 2 + ' udostępnień'}}
       </a>
     </div>
   </ion-card-content>

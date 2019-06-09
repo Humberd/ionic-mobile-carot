@@ -8,10 +8,13 @@ export interface Initiative {
   votes: number;
   author: Author;
   is_starred: boolean;
-  user_vote: number;
+  user_vote: null;
 }
 
 export interface Author {
   id: number;
   username: string;
+  first_name: string;
+  last_name: string;
+  badge: string;
 }

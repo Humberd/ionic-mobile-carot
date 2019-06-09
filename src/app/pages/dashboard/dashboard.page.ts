@@ -8,6 +8,7 @@ import { AppHttpService } from '../../providers/app-http.service';
 })
 export class DashboardPage implements OnInit {
   queryText ='';
+  selectedGroupId = 'zlota52';
 
   constructor(private http: AppHttpService) {
   }
@@ -17,6 +18,10 @@ export class DashboardPage implements OnInit {
 
   search() {
     console.log('search')
+  }
+
+  selectGroup(groupId: string) {
+    this.selectedGroupId = groupId;
   }
 
 }

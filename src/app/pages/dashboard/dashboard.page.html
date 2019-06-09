@@ -29,15 +29,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-tabs >
-    <ion-tab-bar slot="top" >
-      <ion-tab-button [tab]="'zlota52'">
-        <ion-label>Złota 52</ion-label>
-      </ion-tab-button>
-      <ion-tab-button [tab]="'ursynow'">
-        <ion-label>Ursynów</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  <div class="buttons">
+    <button (click)="selectGroup('zlota52')" [class.selected]="selectedGroupId === 'zlota52'">Zlota 52</button>
+    <button (click)="selectGroup('ursynow')" [class.selected]="selectedGroupId === 'ursynow'">Ursynów</button>
+  </div>
 
+  <initiatives-list [groupId]="selectedGroupId"></initiatives-list>
 </ion-content>
