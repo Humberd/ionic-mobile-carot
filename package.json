@@ -1,9 +1,9 @@
 {
-  "name": "ionic-conference-app",
+  "name": "go-locals",
   "version": "0.0.0",
-  "description": "Ionic Conference App",
-  "author": "Ionic Team <hi@ionicframework.com>",
-  "license": "Apache-2.0",
+  "description": "Go Locals",
+  "author": "High Five",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,8 @@
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "serve-prod": "ionic serve --lab",
-    "build-android": "ionic cordova build android --prod --release"
+    "build-android": "ionic cordova build android --prod --release",
+    "build-android-debug": "ionic cordova build android"
   },
   "husky": {
     "hooks": {
